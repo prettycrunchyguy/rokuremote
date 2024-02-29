@@ -1,2 +1,2 @@
 # rokuremote
-https://prettycrunchyguy.github.io/rokuremote
+http://rokuremote.glitch.me
