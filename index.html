@@ -1,0 +1,46 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roku Remote</title>
+    <link rel="stylesheet" href="https://unpkg.com/7.css">
+    <style>
+        #url:hover{
+            background-color:rgba(255,255,255,0.6)
+        }
+    </style>
+</head>
+<body style="background:linear-gradient(#C887C9,#EDD8ED)">
+    <input id="url" placeholder="URL" value="http://192.168.0.1:8060/keypress/" type="url" style="width:calc(100% - 80px + 80px);background-color:rgba(255,255,255,0.4);height:25px;border-radius:0;border:1px solid">
+    <br><br>
+    <button style="height:26px;bottom:1px" onclick="key('back')">Back</button>
+    <button style="height:26px;bottom:1px" onclick="key('home')">Home</button>
+    <br><br>
+    <button style="height:26px;top:2px;left:78px;width:75.5px" onclick="key('up')">Up</button>
+    <br>
+    <button style="height:26px;top:3px;" onclick="key('left')">Left</button>
+    <button style="height:26px;top:3px;" onclick="key('select')">OK</button>
+    <button style="height:26px;top:3px;" onclick="key('right')">Right</button>
+    <br>
+    <button style="height:26px;top:4px;left:78px;width:75.5px" onclick="key('down')">Down</button>
+    <br><br>
+    <button style="height:26px;top:5px" onclick="key('repeat')">Repeat</button>
+    <button style="height:26px;top:5px" onclick="key('info')">Info</button>
+    <br>
+    <button style="height:26px;top:6px" onclick="key('reverse')">Reverse</button>
+    <button style="height:26px;top:6px" onclick="key('play')">Play</button>
+    <button style="height:26px;top:6px" onclick="key('forward')">Forward</button>
+    <script>
+        if (localStorage.getItem('url') == null){
+            localStorage.setItem('url','http://192.168.0.1:8060/keypress/')
+        }
+        document.getElementById('url').value = localStorage.getItem('url')
+        function key(f){
+            localStorage.setItem('url',document.getElementById('url').value)
+            fetch(document.getElementById('url').value+f,{
+                method:"POST"
+            })
+        }
+    </script>
+</body>
+</html>
