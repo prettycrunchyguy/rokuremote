@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         Roku Remote Extension A
+// @name         Roku Remote Extension
 // @namespace    http://tampermonkey.net/
-// @version      1.0
-// @description  Redirects rokuremote website to about:blank
+// @version      2.0
+// @description  Fixes rokuremote website
 // @author       crunchyguy
 // @match        http://rokuremote.glitch.me
 // @match        https://rokuremote.glitch.me
@@ -11,5 +11,6 @@
 // @grant        none
 // ==/UserScript==
 (function(){
-  window.location = 'about:blank?crunchyguy=roku'
+  //window.location = 'about:blank?crunchyguy=roku'
+  window.location = "data:text/html,<script>let e=new XMLHttpRequest();e.onreadystatechange=function(){if(e.readyState==XMLHttpRequest.DONE){document.write(e.responseText)}};e.open('GET','http://rokuremote.glitch.me/app.html',true);e.send(null)</script>"
 })();
